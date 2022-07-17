@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int T;
+	cin>>T;
+	int i;
+	int X,Y;
+	
+	for(int i=0;i<T;i++){
+	cin>>X>>Y;
+	cout<<endl;
+	if(X<Y)
+	    cout<<"FIRST"<<endl;
+	    else if(X>Y)
+	    cout<<"SECOND"<<endl;
+	    else
+	    cout<<"ANY";
+	
+	}
+	return 0;
+}
