@@ -1,0 +1,28 @@
+#include<limits.h>
+int SolveMem(int x,int y,int z,int n,vector<int>& dp){
+// base case
+ if(n==0)
+       return 0;
+    if(n<0)
+        return INT_MIN;
+    
+//     step 3 
+    if(dp[n] != -1)
+        return dp[n];
+    
+    int a = SolveMem(n-x,x,y,z) + 1;
+    int b = SolveMem(n-y,x,y,z) + 1;
+    int c = SolveMem(n-z,x,y,z) + 1;
+    
+//     step 2
+    dp[n] = max(a,max(b,c));
+    return dp[n];
+}
+
+int cutSegments(int n, int x, int y, int z) {
+    
+//     Step 1
+    vector<int> dp(n+1,-1);
+    int ans = SolveMem(n,x,y,z);
+    return ans;
+}
