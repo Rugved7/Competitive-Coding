@@ -1,0 +1,42 @@
+int Solve(vector<int> &num, int tar){
+//     Base Case
+    if(tar < 0)
+        return 0;
+    if(tar == 0)
+        return 1;
+
+int ans = 0;
+for(int i = 0; i<num.size();i++){
+    ans += Solve(num,tar-num[i]);
+}
+    return ans;
+}
+
+// DP Solution
+
+int SolveMem(vector<int> &num, int tar,vector<int> dp){
+//     Base Case
+    if(tar < 0)
+        return 0;
+    if(tar == 0)
+        return 1;
+    
+    if(dp[tar] !=-1){
+        return dp[tar];
+    }
+
+int ans = 0;
+for(int i = 0; i<num.size();i++){
+    ans += SolveMem(num,tar-num[i],dp);
+    
+}
+    dp[tar] = ans;
+    return dp[tar];
+}
+
+int findWays(vector<int> &num, int tar)
+{
+    // Write your code here.
+    vector<int> dp(tar+1,-1);
+    return SolveMem(num,tar,dp);
+}
