@@ -1,0 +1,57 @@
+// Recusrrive Solution
+
+int Solve(int n,vector<int>& days, vector<int>& cost,int index){
+// base case
+    if(index>=n){
+        return 0;
+    }
+
+// Day 1
+int option1 = cost[0]+Solve(n,days,cost,index+1);
+
+int i;
+// day 7
+for(i=index ; i<n && days[i] < days[index] +7;i++);
+int option2 = cost[1] + Solve(n,days,cost,i);
+
+// 30 day
+for(i=index ; i<n && days[i] < days[index] +30;i++);
+int option3 = cost[2] + Solve(n,days,cost,i);
+
+return min(option1,min(option2,option3));
+}
+
+//  DP Solution
+
+int SolveMem(int n,vector<int>& days, vector<int>& cost,int index,vector<int>& dp){
+// base case
+    if(index>=n){
+        return 0;
+    }
+    
+//     step 3
+if(dp[index] != -1)
+    return dp[index];
+// Day 1
+int option1 = cost[0]+SolveMem(n,days,cost,index+1,dp);
+
+int i;
+// day 7
+for(i=index ; i<n && days[i] < days[index] +7;i++);
+int option2 = cost[1] + SolveMem(n,days,cost,i,dp);
+
+// 30 day
+for(i=index ; i<n && days[i] < days[index] +30;i++);
+int option3 = cost[2] + SolveMem(n,days,cost,i,dp);
+
+//     Step 2
+dp[index] = min(option1,min(option2,option3));
+    return dp[index];
+}
+int minimumCoins(int n, vector<int> days, vector<int> cost)
+{
+    // Write your code here.
+//     Step 1
+    vector<int> dp(n+1,-1);
+   return SolveMem(n,days,cost,0,dp); 
+}
