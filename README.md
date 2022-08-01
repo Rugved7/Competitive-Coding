@@ -1,2 +1,2 @@
 # Competitive-Coding
-Here I'm uploading codes of question done on codechef , Leetcode. 
+Here I'm uploading codes of question done on codechef , Leetcode, Coding Ninjas. 
