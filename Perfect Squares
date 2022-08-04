@@ -1,0 +1,89 @@
+// /*class Solution{
+// 	public:
+	
+// // 	int Solve(int n){
+// // // 	base case
+// // if(n==0)
+// // return 0;
+
+// // int ans ;
+
+// // for(int i=0; i*i<=n;i++){
+  
+// //     int temp = i*i;
+    
+// //     ans = min(ans,1 +Solve(n-temp));
+// // }
+// //     return ans;
+// // }
+
+// // DP Solution
+
+
+// 	int SolveMem(int n,vector<int> &dp){
+// // 	base case
+// if(n==0)
+// return 0;
+
+// //  step 3
+// if(dp[n] != -1)
+// return dp[n];
+
+// int ans =n ;
+
+// for(int i=0; i*i<=n;i++){
+  
+//     int temp = i*i;
+    
+//     ans = min(ans,1 +SolveMem(n-temp,dp));
+// }
+
+// //  step 2
+//     dp[n] = ans;
+//     return dp[n];
+// }	
+	
+// 	int MinSquares(int n)
+// 	{
+// 	    // Code here
+	    
+// 	   // step 1 
+// 	   vector<int> dp(n+1,-1);
+// 	   return SolveMem(n,dp);
+// 	}
+// };
+// */
+
+
+
+// // Tabulation Approach
+
+
+
+// class Solution{
+// 	public:
+	
+//  	int SolveTab(int n){
+//  vector<int> dp(n+1,INT_MAX);
+//    dp[0] = 0;
+
+
+//  for(int i=1; i<=n;i++){
+//    for(int j=1;j*j<=n;j++){
+//         int temp = j*j;
+        
+//         if(i-temp>=0)
+//         dp[i] = min(dp[i],1+dp[i-temp]);
+//    }
+    
+//  }  
+//     return dp[n];
+//  }
+//  	int MinSquares(int n)
+// 	{
+// 	    // Code here
+	    
+// 	 return SolveTab(n);
+	 
+// 	}
+// };
